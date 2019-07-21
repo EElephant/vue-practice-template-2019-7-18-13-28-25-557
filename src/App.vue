@@ -1,17 +1,27 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h2>Multi Counter</h2><br/>
+    <input type="number" v-model.number="count.counterNumber" placeholder="please input number"/>
+    <CounterGroup
+            v-bind:counter="count"></CounterGroup>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import CounterGroup from './components/CounterGroup'
 export default {
+
   name: 'app',
+  data:function(){
+    return{
+      count: {
+        counterNumber:'',
+        sum:0
+      }
+    }
+  },
   components: {
-    HelloWorld
+    CounterGroup
   }
 }
 </script>
