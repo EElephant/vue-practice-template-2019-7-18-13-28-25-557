@@ -4,12 +4,13 @@
             v-bind:singleCount="item"
             v-on:conterTatolSum="calculateSum"
             ></Counter>
-        <br>总数：{{counter.sum}}
+    <CounterSsum v-bind:sum="counter.sum"></CounterSsum>
     </div>
 </template>
 
 <script>
     import Counter from './Counter'
+    import CounterSsum from './CounterSum'
     export default {
         props:['counter'],
         name: "CounterGroup",
@@ -19,7 +20,8 @@
             }
         },
         components:{
-            Counter
+            Counter,
+            CounterSsum
         }
     }
 
