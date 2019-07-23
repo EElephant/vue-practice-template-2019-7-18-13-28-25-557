@@ -1,12 +1,12 @@
 <template>
     <div>
-        <br>总数：{{sum}}
+        <br>总数：
+        <div>{{this.$store.state.sum}}</div>
     </div>
 </template>
 
 <script>
     export default {
-        props:['sum'],
         name: "CounterSum"
     }
 </script>

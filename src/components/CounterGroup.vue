@@ -1,10 +1,8 @@
 <template>
     <div id="CounterGroup">
-    <Counter v-for="(item, index) in counter.counterNumber" :key="index"
-            v-bind:singleCount="item"
-            v-on:conterTatolSum="calculateSum"
-            ></Counter>
-    <CounterSsum v-bind:sum="counter.sum"></CounterSsum>
+    <Counter v-for="(item, index) in this.$store.state.allCounter.length" :key="index"
+            v-bind:index="index"></Counter>
+    <CounterSsum></CounterSsum>
     </div>
 </template>
 
@@ -12,13 +10,7 @@
     import Counter from './Counter'
     import CounterSsum from './CounterSum'
     export default {
-        props:['counter'],
         name: "CounterGroup",
-        methods:{
-            calculateSum (val) {
-                this.counter.sum += val;
-            }
-        },
         components:{
             Counter,
             CounterSsum

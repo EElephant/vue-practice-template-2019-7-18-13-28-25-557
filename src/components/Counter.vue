@@ -1,7 +1,11 @@
 <template>
     <div id="Counter">
         <table>
-            <ul>{{counter}}</ul>
+            <!-- <ul>{{counter}}</ul> -->
+            <ul>{{this.$store.state.allCounter}}</ul>
+            <ul>{{this.$store.state.allCounter[this.index]}}</ul>
+            <ul>{{this.$store.state.allCounter[this.index].counter}}</ul>
+            <ul>index:{{index}}</ul>
             <ul>
                 <button @click="addCounter">点我+</button>
                 <button @click="reduceCounter">点我-</button>
@@ -11,8 +15,9 @@
 </template>
 
 <script>
+
     export default {
-        props:['singleCount'],
+        props:['index'],
         name: "Counter",
         data:function(){
             return{
@@ -21,26 +26,25 @@
         },
         methods:{
             addCounter:function () {
-                this.counter ++;
-                this.$emit('conterTatolSum', 1);
+                console.log('Counter index:',this.index);
+                //this.counter ++;
+                this.$store.commit("addCounter",this.index)
+                this.$store.commit("countSum")
+                console.log("111111111111111")
             },
             reduceCounter:function () {
-                this.counter --;
-                this.$emit('conterTatolSum', -1)
+                //this.counter --;
+                this.$store.commit("reduceCounter",this.index)
+                this.$store.commit("countSum")
             }
-        },
-        // computed:{
-        //     returnSingleSum: function () {
-        //         this.$emit('conterTatolSum',this.counter)
-        //     }
-        // }
+        }
     }
 </script>
 
 <style scoped>
 #Counter{
-    /*align-content: center;*/
-    /*width: 200px;*/
     margin: auto;
 }
 </style>
+
+
